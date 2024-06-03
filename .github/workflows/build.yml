@@ -49,5 +49,5 @@ jobs:
         uses: rohith/publish-nuget@v2
         with:
           NUGET_AUTH_TOKEN: ${{ secrets.NUGET_API_KEY }}
-          PACKAGE_PATH: '*.nupkg'
+          PACKAGE_PATH: 'artifacts/*.nupkg'
           SOURCE_URL: https://api.nuget.org/v3/index.json

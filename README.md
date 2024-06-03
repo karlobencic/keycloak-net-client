@@ -16,7 +16,7 @@ A modern and lightweight C# library designed for seamless integration with the K
 Install the library via NuGet:
 
 ```
-Install-Package Keycloak.NET
+Install-Package Keycloak.NET.Client
 ```
 
 ### Usage

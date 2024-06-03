@@ -10,8 +10,8 @@
     <Company>NextLevel Dev</Company>
     <Description>A modern and lightweight C# library for Keycloak REST API integration.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/your-username/keycloak-net-client.git</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/your-username/keycloak-net-client</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/karlobencic/keycloak-net-client.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/karlobencic/keycloak-net-client</PackageProjectUrl>
     <PackageTags>keycloak, identity, authentication, authorization, .net, csharp</PackageTags>
   </PropertyGroup>
 
