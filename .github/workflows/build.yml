@@ -1,0 +1,53 @@
+﻿name: Build and Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Pack
+        run: dotnet pack --configuration Release --no-restore --output ./artifacts
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: package
+          path: artifacts/*.nupkg
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    if: ${{ github.ref == 'refs/heads/main' }}
+
+    steps:
+      - name: Download package
+        uses: actions/download-artifact@v3
+        with:
+          name: package
+
+      - name: Publish to NuGet
+        uses: rohith/publish-nuget@v2
+        with:
+          NUGET_AUTH_TOKEN: ${{ secrets.NUGET_API_KEY }}
+          PACKAGE_PATH: '*.nupkg'
+          SOURCE_URL: https://api.nuget.org/v3/index.json
