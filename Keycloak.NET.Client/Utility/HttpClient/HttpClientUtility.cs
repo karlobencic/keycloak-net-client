@@ -202,9 +202,9 @@ public class HttpClientUtility : IHttpClientUtility
         }
     }
 
-    private static async Task<T> MakeResponse<T>(HttpResponseMessage responseMessage)
+    private static async Task<T?> MakeResponse<T>(HttpResponseMessage responseMessage)
     {
         string jsonString = await responseMessage.Content.ReadAsStringAsync();
-        return JsonSerializer.Deserialize<T>(jsonString);
+        return string.IsNullOrEmpty(jsonString) ? default : JsonSerializer.Deserialize<T>(jsonString);
     }
 }

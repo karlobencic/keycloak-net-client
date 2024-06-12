@@ -14,7 +14,7 @@ public class HttpClientUtilityException(string message, HttpStatusCode statusCod
 
     public string? ErrorDescription { get; }
 
-    public HttpClientUtilityException(string message, HttpStatusCode statusCode, string errorResponse, string errorDescription)
+    public HttpClientUtilityException(string message, HttpStatusCode statusCode, string? errorResponse, string? errorDescription)
         : this(message, statusCode)
     {
         ErrorResponse = errorResponse;

@@ -1,5 +1,9 @@
 ﻿# Keycloak.NET Client Library
 
+[![NuGet](https://img.shields.io/nuget/v/Keycloak.NET.Client)](https://www.nuget.org/packages/Keycloak.NET.Client/)
+[![NuGet](https://img.shields.io/nuget/dt/Keycloak.NET.Client)](https://www.nuget.org/packages/Keycloak.NET.Client/)
+[![GitHub](https://img.shields.io/github/license/karlobencic/keycloak-net-client)](./LICENSE)
+
 A modern and lightweight C# library designed for seamless integration with the Keycloak REST API, leveraging the latest .NET features for a clean and efficient developer experience. While other Keycloak libraries may offer a broader feature set, Keycloak.NET focuses on providing a streamlined and highly performant solution for common Keycloak interactions, making it ideal for projects where speed and simplicity are paramount.
 
 ## Features
@@ -51,7 +55,3 @@ Install-Package Keycloak.NET.Client
        )
    );
    ```
-
-## License
-
-This library is licensed under the [MIT License](./LICENSE).

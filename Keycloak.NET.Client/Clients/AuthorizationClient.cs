@@ -1,6 +1,6 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Net;
+﻿using System.Net;
 using System.Text.Json;
+using Microsoft.IdentityModel.JsonWebTokens;
 using NextLevelDev.Keycloak.Models.PermissionTicket;
 using NextLevelDev.Keycloak.Models.RequestingPartyToken;
 using NextLevelDev.Keycloak.Models.Resources;
@@ -105,10 +105,10 @@ internal class AuthorizationClient(IHttpClientUtility httpClientUtility) : Keycl
             return new EvaluatePermissionsResponse(Enumerable.Empty<ResourcePermission>().ToList());
         }
 
-        var jwtHandler = new JwtSecurityTokenHandler();
-        var jwtToken = jwtHandler.ReadJwtToken(accessToken.AccessToken);
+        var jwtHandler = new JsonWebTokenHandler();
+        var jwtToken = jwtHandler.ReadJsonWebToken(accessToken.AccessToken);
 
-        var authorization = JsonSerializer.Deserialize<AuthorizationJsonData>(jwtToken.Payload["authorization"].ToString());
+        var authorization = JsonSerializer.Deserialize<AuthorizationJsonData>(jwtToken.GetPayloadValue<string>("authorization"));
         var permissions = authorization
             .Permissions.Where(x => x.ResourceName != "Default Resource")
             .Select(x => new ResourcePermission(x.ResourceName, x.Scopes));
